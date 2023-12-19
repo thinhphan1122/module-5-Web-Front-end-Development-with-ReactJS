@@ -5,11 +5,10 @@ import rootSaga from "../saga/userSaga";
 
 // Apply middleware
 const sagaMiddleware = createSagaMiddleware();
-
-// Đăng kí reducer cho redux quản lí
+// đăng kí reducer cho redux quản lí
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+// Chạy middleware cho redux để chạy các effect taị dòng code
 
-// Chạy middleware cho redux để chạy các effect tại dòng code
 sagaMiddleware.run(rootSaga);
 
 export default store;

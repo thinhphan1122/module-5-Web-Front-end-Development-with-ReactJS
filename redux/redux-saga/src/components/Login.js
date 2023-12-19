@@ -4,20 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({ username: "", password: "" });
-
   const userlogined = useSelector((state) => state.userlogined);
   const setValueForUser = (key, value) => {
-    const newValue = { ...user, [key]: value };
-    setUser(newValue);
+    const newVal = { ...user, [key]: value };
+    setUser(newVal);
   };
   const login = () => {
-    dispacth({type: "LOGIN", payload: "user"});
+    dispatch({ type: "LOGIN", payload: user });
   };
   useEffect(() => {
     if (userlogined.username) {
-        navigate("/user");
+      navigate("/users");
     }
   }, [userlogined, navigate]);
   return (
@@ -45,5 +44,4 @@ function Login() {
     </form>
   );
 }
-
 export default Login;
