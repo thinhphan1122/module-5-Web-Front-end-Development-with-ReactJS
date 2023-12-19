@@ -15,7 +15,7 @@ function* getUsers() {
 function* deleteUser(action) {
   try {
     yield axios.delete(`https://jsonplaceholder.typicode.com/users/${action.payload}`);
-    yield put(showAlert('User deleted successfully'));
+    yield put(showAlert('User deleted successfully, response status 200'));
   } catch (error) {
     yield put(showAlert('Failed to delete user'));
   }
