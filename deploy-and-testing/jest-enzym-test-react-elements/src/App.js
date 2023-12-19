@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState } from "react";
+import React from 'react';
 
 // function App() {
 //   return (
 //     <div className="App">
 //       <header className="App-header">
 //         <img src={logo} className="App-logo" alt="logo" />
-//         p>
+//         <p>
 //           Edit <code>src/App.js</code> and save to reload.
 //         </p>
 //         <a
@@ -23,21 +23,12 @@ import React, { useState } from "react";
 //   );
 // }
 
-const App = () => {
-  const [counter, setcounter] = useState(0);
-
+function App() {
   return (
-    <div>
-      <h1>This is counter app</h1>
-      <div className="counter-value">Count: {counter}</div>
-      <button className="increment" onClick={() => setcounter(counter + 1)}>
-        Increment
-      </button>
-      <button className="decrement" onClick={() => setcounter(counter - 1)}>
-        Decrement
-      </button>
+    <div className="app-pages">
+      Hello world!
     </div>
-  );
-};
+  )
+}
 
 export default App;
