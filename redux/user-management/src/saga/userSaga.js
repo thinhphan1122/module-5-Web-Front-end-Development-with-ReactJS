@@ -1,21 +1,31 @@
-import axios from "axios";
-import { put, takeLatest } from "redux-saga/effects";
-import {
-  FETCH_USER,
-  FETCH_USER_SUCCESS,
-} from "../redux/action";
+// userSaga.js
+import { put, takeLatest, all } from 'redux-saga/effects';
+import { ActionTypes, setUsers, showAlert } from '../redux/action';
+import axios from 'axios';
 
-const BaseURL = "https://jsonplaceholder.typicode.com/users";
-
-function* getUser(action) {
+function* getUsers() {
   try {
-    const response = yield axios.get(BaseURL);
-    yield put({ type: FETCH_USER_SUCCESS, payload: response.data });
+    const response = yield axios.get('https://jsonplaceholder.typicode.com/users');
+    yield put(setUsers(response.data));
   } catch (error) {
-    console.log("error - getUser : ", error);
+    yield put(showAlert('Failed to get users'));
   }
 }
 
-export default function* rootSaga() {
-  yield takeLatest(FETCH_USER, getUser);
+function* deleteUser(action) {
+  try {
+    yield axios.delete(`https://jsonplaceholder.typicode.com/users/${action.payload}`);
+    yield put(showAlert('User deleted successfully'));
+  } catch (error) {
+    yield put(showAlert('Failed to delete user'));
+  }
+}
+
+function* watchActions() {
+  yield takeLatest(ActionTypes.GET_USERS, getUsers);
+  yield takeLatest(ActionTypes.DELETE_USER, deleteUser);
+}
+
+export default function* userSaga() {
+  yield all([watchActions()]);
 }

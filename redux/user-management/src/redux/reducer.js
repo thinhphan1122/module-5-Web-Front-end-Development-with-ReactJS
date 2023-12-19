@@ -1,18 +1,26 @@
-import { FETCH_USER_SUCCESS } from "./action";
+// reducer.js
+import { ActionTypes } from "./action";
 
-// khởi tạo giá trị mặc định cho state gốc.
 const initialState = {
   users: [],
+  alert: null,
 };
 
-// Khởi tạo reducer
-const rootReducer = (state = initialState, action) => {
-  // Handle các actions gửi lên
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_USER_SUCCESS:
-      return { ...state, users: action.payload };
+    case ActionTypes.SET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case ActionTypes.SHOW_ALERT:
+      return {
+        ...state,
+        alert: action.payload,
+      };
     default:
       return state;
   }
 };
-export default rootReducer;
+
+export default reducer;
