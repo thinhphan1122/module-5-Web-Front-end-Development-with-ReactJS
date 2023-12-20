@@ -30,7 +30,7 @@ class App extends Component {
       color: "black",
     };
   }
-
+ 
   componentDidMount() {
     setTimeout(() => {
       this.setState({ color: "pink" });
