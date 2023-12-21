@@ -15,31 +15,39 @@ const initialState = {
   success: false,
 };
 
-export const getproducts = createAsyncThunk("product/list", async () => {
+export const getProducts = createAsyncThunk("product/list", async () => {
   const response = await findProducts();
   return response.data;
 });
 
-export const getproduct = createAsyncThunk("product/detail", async (productId) => {
-  const response = await findProduct(productId);
+export const getProduct = createAsyncThunk(
+  "product/detail",
+  async (productId) => {
+    const response = await findProduct(productId);
+    return response.data;
+  }
+);
 
-  return response.data;
-});
+export const addProduct = createAsyncThunk(
+  "product/create",
+  async (product) => {
+    const response = await createProduct(product);
+    return response.data;
+  }
+);
 
-export const addproduct = createAsyncThunk("product/create", async (product) => {
-  const response = await createProduct(product);
-  return response.data;
-});
-
-export const editproduct = createAsyncThunk("product/edit", async (product) => {
+export const editProduct = createAsyncThunk("product/edit", async (product) => {
   const response = await updateProduct(product);
   return response.data;
 });
 
-export const removeproduct = createAsyncThunk("product/remove", async (productId) => {
-  const response = await deleteProduct(productId);
-  return response.data;
-});
+export const removeProduct = createAsyncThunk(
+  "product/remove",
+  async (productId) => {
+    const response = await deleteProduct(productId);
+    return response.data;
+  }
+);
 
 export const productSlice = createSlice({
   name: "product",
@@ -58,17 +66,17 @@ export const productSlice = createSlice({
   extraReducers: (builder) => {
     builder
       //Update states of get products action
-      .addCase(getproducts.pending, (state) => {
+      .addCase(getProducts.pending, (state) => {
         state.success = false;
         state.loading = true;
         state.error = false;
       })
-      .addCase(getproducts.rejected, (state, action) => {
+      .addCase(getProducts.rejected, (state, action) => {
         state.success = false;
         state.loading = false;
         state.error = action.error;
       })
-      .addCase(getproducts.fulfilled, (state, action) => {
+      .addCase(getProducts.fulfilled, (state, action) => {
         state.success = true;
         state.loading = false;
         state.values = action.payload;
@@ -76,17 +84,17 @@ export const productSlice = createSlice({
       })
 
       //Update states of get product action
-      .addCase(getproduct.pending, (state) => {
+      .addCase(getProduct.pending, (state) => {
         state.success = false;
         state.loading = true;
         state.error = false;
       })
-      .addCase(getproduct.rejected, (state, action) => {
+      .addCase(getProduct.rejected, (state, action) => {
         state.success = false;
         state.loading = false;
         state.error = action.error;
       })
-      .addCase(getproduct.fulfilled, (state, action) => {
+      .addCase(getProduct.fulfilled, (state, action) => {
         state.success = true;
         state.loading = false;
         state.value = action.payload;
@@ -94,17 +102,17 @@ export const productSlice = createSlice({
       })
 
       //Update states of add product action
-      .addCase(addproduct.pending, (state) => {
+      .addCase(addProduct.pending, (state) => {
         state.success = false;
         state.loading = true;
         state.error = false;
       })
-      .addCase(addproduct.rejected, (state, action) => {
+      .addCase(addProduct.rejected, (state, action) => {
         state.success = false;
         state.loading = false;
         state.error = action.error;
       })
-      .addCase(addproduct.fulfilled, (state, action) => {
+      .addCase(addProduct.fulfilled, (state, action) => {
         state.success = true;
         state.loading = false;
         state.value = action.payload;
@@ -112,17 +120,17 @@ export const productSlice = createSlice({
       })
 
       //Update states of edit product action
-      .addCase(editproduct.pending, (state) => {
+      .addCase(editProduct.pending, (state) => {
         state.success = false;
         state.loading = true;
         state.error = false;
       })
-      .addCase(editproduct.rejected, (state, action) => {
+      .addCase(editProduct.rejected, (state, action) => {
         state.success = false;
         state.loading = false;
         state.error = action.error;
       })
-      .addCase(editproduct.fulfilled, (state, action) => {
+      .addCase(editProduct.fulfilled, (state, action) => {
         state.success = true;
         state.loading = false;
         state.value = action.payload;
@@ -130,17 +138,17 @@ export const productSlice = createSlice({
       })
 
       //Update states of remove product action
-      .addCase(removeproduct.pending, (state) => {
+      .addCase(removeProduct.pending, (state) => {
         state.success = false;
         state.loading = true;
         state.error = false;
       })
-      .addCase(removeproduct.rejected, (state, action) => {
+      .addCase(removeProduct.rejected, (state, action) => {
         state.success = false;
         state.loading = false;
         state.error = action.error;
       })
-      .addCase(removeproduct.fulfilled, (state, action) => {
+      .addCase(removeProduct.fulfilled, (state, action) => {
         state.success = true;
         state.loading = false;
         state.value = action.payload;

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const PRODUCT_MANAGEMENT_API =
-  "https://localhost:3001";
+const PRODUCT_MANAGEMENT_API = "http://localhost:3001";
 
 export const findProducts = async () => {
   let result = null;
