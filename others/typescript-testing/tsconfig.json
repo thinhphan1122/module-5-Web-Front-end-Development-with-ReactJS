@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+    /* Modules*/
+    "target": "ES2016", //Change to "ES2015" to compile ES6
+    "rootDir": "./src", //Where to compile from
+    "outDir": "./public", //Where to compile to ()
+    
+    /* JavaScript Support*/
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "checkJs": true, // Type check JavaScript files and report errors
+
+    /* Emit*/
+    "sourceMap": true, // Create source map files for emiited JavaScript
+    "removeComments": true // Don't emit comments
+    },
+    "include": ["src", "public/reference-types.js"] // Ensure only files in src are compiled
+}
