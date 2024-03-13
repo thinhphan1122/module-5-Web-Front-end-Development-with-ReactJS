@@ -46,7 +46,7 @@ Một số tính năng nổi bật của ES6:
 
 - Module: Modules ES6 là một tính năng của JavaScript từ phiên bản ES6 trở đi, cung cấp cú pháp và cách thức để tổ chức và quản lý mã nguồn thành các đơn vị độc lập và tái sử dụng. Modules cho phép xuất và nhập các biến, hàm, lớp và các thành phần khác giữa các module khác nhau. Điều này giúp cải thiện quản lý mã nguồn, khả năng tái sử dụng và khả năng mở rộng của ứng dụng JavaScript. Cú pháp xuất và nhập modules được thực hiện bằng các từ khóa export và import. Modules ES6 tương thích với nhiều môi trường thực thi JavaScript như trình duyệt web và Node.js.
 
-- Spread Operator: sử dụng cú pháp "...", duyệt qua số lượn không xác định các thuộc tính của object/ các phần tử của array để tạo đối tượng/ mảng mới
+- Spread Operator: sử dụng cú pháp "...", duyệt qua số lượng không xác định các thuộc tính của object/ các phần tử của array để tạo đối tượng/ mảng mới
 
 - Destruturing Assignment: sử dụng cú pháp [], {}; copy các giá trị các thuộc tính của object/các phần tử của array để tạo ra các biến mới
 
